@@ -25,7 +25,7 @@ install:
 
 script:
   - cd test
-  - lua -e "print(require'cURL'.version())"
+  - lua -v -e "print(require'cURL'.version())"
   - lunit.sh test.lua
 
 after_success:

@@ -12,8 +12,8 @@ CURL="curl --retry 5"
 
 LUA51="lua-5.1.5"
 LUA52="lua-5.2.4"
-LUA53="lua-5.3.2"
-LUAJIT_VERSION="2.0.4"
+LUA53="lua-5.3.4"
+LUAJIT_VERSION="2.0.5"
 LUAJIT_BASE="LuaJIT-$LUAJIT_VERSION"
 
 source .travis/platform.sh
