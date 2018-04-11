@@ -1,5 +1,8 @@
-[![Build Status](https://travis-ci.org/moteus/lua-travis-example.png?branch=master)](https://travis-ci.org/moteus/lua-travis-example)
-[![Coverage Status](https://coveralls.io/repos/moteus/lua-travis-example/badge.png?branch=master)](https://coveralls.io/r/moteus/lua-travis-example?branch=master)
+This is NiteHawk's fork of https://github.com/moteus/lua-travis-example.
+
+---
+[![Build Status](https://travis-ci.org/n1tehawk/lua-travis-example.svg?branch=nitehawk)](https://travis-ci.org/n1tehawk/lua-travis-example)
+[![Coverage Status](https://coveralls.io/repos/n1tehawk/lua-travis-example/badge.svg?branch=nitehawk)](https://coveralls.io/r/n1tehawk/lua-travis-example?branch=nitehawk)
 [![License](http://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
 
 ### This project demonstrates how to:
