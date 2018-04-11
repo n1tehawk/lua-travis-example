@@ -8,6 +8,11 @@
 
 set -eufo pipefail
 
+CURL="curl --retry 5"
+
+LUA51="lua-5.1.5"
+LUA52="lua-5.2.4"
+LUA53="lua-5.3.2"
 LUAJIT_VERSION="2.0.4"
 LUAJIT_BASE="LuaJIT-$LUAJIT_VERSION"
 
@@ -40,7 +45,7 @@ mkdir -p "$LUA_HOME_DIR"
 if [ "$LUAJIT" == "yes" ]; then
 
   if [ "$LUA" == "luajit" ]; then
-    curl --location https://github.com/LuaJIT/LuaJIT/archive/v$LUAJIT_VERSION.tar.gz | tar xz;
+    $CURL --location https://github.com/LuaJIT/LuaJIT/archive/v$LUAJIT_VERSION.tar.gz | tar xz;
   else
     git clone https://github.com/LuaJIT/LuaJIT.git $LUAJIT_BASE;
   fi
@@ -61,14 +66,14 @@ if [ "$LUAJIT" == "yes" ]; then
 else
 
   if [ "$LUA" == "lua5.1" ]; then
-    curl http://www.lua.org/ftp/lua-5.1.5.tar.gz | tar xz
-    cd lua-5.1.5;
+    $CURL http://www.lua.org/ftp/$LUA51.tar.gz | tar xz
+    cd $LUA51;
   elif [ "$LUA" == "lua5.2" ]; then
-    curl http://www.lua.org/ftp/lua-5.2.4.tar.gz | tar xz
-    cd lua-5.2.4;
+    $CURL http://www.lua.org/ftp/$LUA52.tar.gz | tar xz
+    cd $LUA52;
   elif [ "$LUA" == "lua5.3" ]; then
-    curl http://www.lua.org/ftp/lua-5.3.2.tar.gz | tar xz
-    cd lua-5.3.2;
+    $CURL http://www.lua.org/ftp/$LUA53.tar.gz | tar xz
+    cd $LUA53;
   fi
 
   # Build Lua without backwards compatibility for testing
@@ -87,7 +92,7 @@ lua -v
 
 LUAROCKS_BASE=luarocks-$LUAROCKS
 
-curl --location http://luarocks.org/releases/$LUAROCKS_BASE.tar.gz | tar xz
+$CURL --location http://luarocks.org/releases/$LUAROCKS_BASE.tar.gz | tar xz
 
 cd $LUAROCKS_BASE
 
@@ -114,9 +119,9 @@ rm -rf $LUAROCKS_BASE
 if [ "$LUAJIT" == "yes" ]; then
   rm -rf $LUAJIT_BASE;
 elif [ "$LUA" == "lua5.1" ]; then
-  rm -rf lua-5.1.5;
+  rm -rf $LUA51;
 elif [ "$LUA" == "lua5.2" ]; then
-  rm -rf lua-5.2.4;
+  rm -rf $LUA52;
 elif [ "$LUA" == "lua5.3" ]; then
-  rm -rf lua-5.3.2;
+  rm -rf $LUA53;
 fi
